@@ -1,6 +1,13 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (!document.querySelector('link[href="css/enhancements.css"]')) {
+    const enhancementStyles = document.createElement('link');
+    enhancementStyles.rel = 'stylesheet';
+    enhancementStyles.href = 'css/enhancements.css';
+    document.head.appendChild(enhancementStyles);
+  }
+
   const grid = document.querySelector('#product-grid');
   const featuredGrid = document.querySelector('#featured-products');
   const searchInput = document.querySelector('#product-search');
@@ -17,14 +24,65 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
   const siteNav = document.querySelector('.site-nav');
   const scrollTop = document.querySelector('#scroll-top');
-  const currency = new Intl.NumberFormat('en-PH', {style:'currency',currency:'PHP',maximumFractionDigits:0});
+  const currency = new Intl.NumberFormat('en-PH', {
+    style: 'currency',
+    currency: 'PHP',
+    maximumFractionDigits: 0
+  });
+
   let activeFilter = 'all';
   let lastFocused = null;
   let selectedModalProduct = null;
 
-  const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[char]));
+  const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#039;',
+    '"': '&quot;'
+  }[char]));
+
   const productById = (id) => products.find((product) => product.id === id);
-  const formatPrice = (price) => Number.isFinite(price) ? `From ${currency.format(price)}` : 'Price on inquiry';
+  const formatPrice = (price) => Number.isFinite(price)
+    ? `From ${currency.format(price)}`
+    : 'Price on inquiry';
+
+  const revealObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -45px 0px' })
+    : null;
+
+  function registerRevealElements(root = document) {
+    const selectors = [
+      '.section-heading',
+      '.featured-card',
+      '.product-card',
+      '.category-card',
+      '.story-visual',
+      '.story-copy',
+      '.care-card',
+      '.contact-copy',
+      '.inquiry-card'
+    ];
+
+    const elements = [...root.querySelectorAll(selectors.join(','))];
+    elements.forEach((element, index) => {
+      if (element.dataset.revealReady === 'true') return;
+      element.dataset.revealReady = 'true';
+      element.classList.add('reveal-on-scroll', `reveal-delay-${(index % 3) + 1}`);
+
+      if (revealObserver) {
+        revealObserver.observe(element);
+      } else {
+        element.classList.add('is-visible');
+      }
+    });
+  }
 
   function productCard(product) {
     const statusClass = product.availability === 'Available' ? '' : ' unavailable';
@@ -36,7 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderFeatured() {
-    featuredGrid.innerHTML = products.filter((product) => product.featured).slice(0, 3).map(featuredCard).join('');
+    featuredGrid.innerHTML = products
+      .filter((product) => product.featured)
+      .slice(0, 3)
+      .map(featuredCard)
+      .join('');
+    registerRevealElements(featuredGrid);
   }
 
   function filteredProducts() {
@@ -48,11 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     switch (sortSelect.value) {
-      case 'name-asc': visible.sort((a,b) => a.name.localeCompare(b.name)); break;
-      case 'price-low': visible.sort((a,b) => a.price - b.price); break;
-      case 'price-high': visible.sort((a,b) => b.price - a.price); break;
-      default: visible.sort((a,b) => Number(b.featured) - Number(a.featured));
+      case 'name-asc':
+        visible.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'price-low':
+        visible.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-high':
+        visible.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        visible.sort((a, b) => Number(b.featured) - Number(a.featured));
     }
+
     return visible;
   }
 
@@ -63,15 +134,20 @@ document.addEventListener('DOMContentLoaded', () => {
     resultCount.textContent = visible.length === products.length && activeFilter === 'all' && !searchInput.value
       ? 'Showing all arrangements'
       : `Showing ${visible.length} arrangement${visible.length === 1 ? '' : 's'}`;
+    registerRevealElements(grid);
   }
 
   function populateProductSelect() {
-    productSelect.insertAdjacentHTML('beforeend', products.map((product) => `<option value="${product.id}">${escapeHtml(product.name)}</option>`).join(''));
+    productSelect.insertAdjacentHTML(
+      'beforeend',
+      products.map((product) => `<option value="${product.id}">${escapeHtml(product.name)}</option>`).join('')
+    );
   }
 
   function openModal(id) {
     const product = productById(id);
     if (!product) return;
+
     selectedModalProduct = product;
     lastFocused = document.activeElement;
     document.querySelector('#modal-image').src = product.image;
@@ -101,16 +177,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   modalClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !modal.hidden) closeModal();
+
     if (event.key === 'Tab' && !modal.hidden) {
-      const focusable = [...modal.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter((el) => !el.disabled);
+      const focusable = [...modal.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+        .filter((element) => !element.disabled);
       if (!focusable.length) return;
+
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 
@@ -130,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   searchInput.addEventListener('input', renderProducts);
   sortSelect.addEventListener('change', renderProducts);
+
   resetButton.addEventListener('click', () => {
     activeFilter = 'all';
     searchInput.value = '';
@@ -142,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeFilter = card.dataset.category;
     filterButtons.forEach((item) => item.classList.toggle('active', item.dataset.filter === activeFilter));
     renderProducts();
-    document.querySelector('#collection').scrollIntoView({behavior:'smooth'});
+    document.querySelector('#collection').scrollIntoView({ behavior: 'smooth' });
   }));
 
   menuToggle.addEventListener('click', () => {
@@ -153,22 +241,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   siteNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-    menuToggle.setAttribute('aria-expanded','false');
-    menuToggle.setAttribute('aria-label','Open navigation');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation');
     siteNav.classList.remove('is-open');
   }));
 
   inquiryForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const required = ['full-name','email','subject','message'];
+    const required = ['full-name', 'email', 'subject', 'message'];
     let valid = true;
 
     required.forEach((id) => {
       const field = document.getElementById(id);
       const error = document.querySelector(`[data-error-for="${id}"]`);
       let message = '';
-      if (!field.value.trim()) message = 'Please fill in this field.';
-      else if (id === 'email' && !/^\S+@\S+\.\S+$/.test(field.value.trim())) message = 'Please enter a valid email.';
+
+      if (!field.value.trim()) {
+        message = 'Please fill in this field.';
+      } else if (id === 'email' && !/^\S+@\S+\.\S+$/.test(field.value.trim())) {
+        message = 'Please enter a valid email.';
+      }
+
       error.textContent = message;
       field.setAttribute('aria-invalid', String(Boolean(message)));
       if (message) valid = false;
@@ -186,17 +279,21 @@ document.addEventListener('DOMContentLoaded', () => {
     inquiryForm.reset();
   });
 
-  inquiryForm.querySelectorAll('input,textarea,select').forEach((field) => field.addEventListener('input', () => {
+  inquiryForm.querySelectorAll('input, textarea, select').forEach((field) => field.addEventListener('input', () => {
     const error = document.querySelector(`[data-error-for="${field.id}"]`);
     if (error) error.textContent = '';
     field.removeAttribute('aria-invalid');
   }));
 
-  window.addEventListener('scroll', () => scrollTop.classList.toggle('is-visible', window.scrollY > 500), {passive:true});
-  scrollTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+  window.addEventListener('scroll', () => {
+    scrollTop.classList.toggle('is-visible', window.scrollY > 500);
+  }, { passive: true });
+
+  scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   document.querySelector('#current-year').textContent = new Date().getFullYear();
 
   renderFeatured();
   renderProducts();
   populateProductSelect();
+  registerRevealElements(document);
 });
