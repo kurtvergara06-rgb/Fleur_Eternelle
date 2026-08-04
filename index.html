@@ -3,95 +3,185 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Fleur Éternelle by Verleane — a curated floral collection for quiet, beautiful moments.">
+  <meta name="description" content="Fleur Éternelle by Verleane — timeless flowers for meaningful moments.">
   <title>Fleur Éternelle by Verleane</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
+
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="Fleur Éternelle home">
-        <img class="brand-logo" src="assets/images/fleur-eternelle-logo.jpg" alt="Fleur Éternelle by Verleane logo" width="56" height="56">
+        <img class="brand-logo" src="assets/images/fleur-eternelle-logo.jpg" alt="Fleur Éternelle by Verleane logo" width="48" height="48">
         <span class="brand-copy"><strong>Fleur Éternelle</strong><small>by Verleane</small></span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="#collection">Collection</a>
         <a href="#categories">Categories</a>
-        <a href="#about">Our story</a>
-        <a href="#care">Care guide</a>
-        <a class="nav-cta" href="#contact">Inquire <span aria-hidden="true">↗</span></a>
+        <a href="#about">About</a>
+        <a href="#care">Care tips</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Inquire</a>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="hero section-pad" id="home" aria-labelledby="hero-title">
+    <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> The art of the lasting bloom</p>
-          <h1 id="hero-title">Flowers for <em>softly</em> unforgettable moments.</h1>
-          <p class="hero-text">Thoughtfully composed arrangements, selected for their feeling as much as their form. Explore our current floral collection.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#collection">Explore collection <span aria-hidden="true">↘</span></a><a class="text-link" href="#about">Meet Verleane <span aria-hidden="true">→</span></a></div>
-          <div class="hero-note"><span class="note-dot"></span><span>Seasonal stems, thoughtfully sourced</span></div>
+          <p class="eyebrow">Curated flowers · lasting beauty</p>
+          <h1 id="hero-title">Flowers that <em>carry forever</em> with them.</h1>
+          <p class="hero-text">Inspired by meaningful moments and made with care, every arrangement is a continuation of the heart — a story, a memory, and a feeling preserved through flowers.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#collection">View collection</a>
+            <a class="button button-ghost" href="#contact">Send inquiry</a>
+          </div>
+          <div class="hero-stats" aria-label="Business highlights">
+            <div><strong>20+</strong><span>Floral designs</span></div>
+            <div><strong>500+</strong><span>Happy moments</span></div>
+            <div><strong>∞</strong><span>Memories kept</span></div>
+          </div>
         </div>
         <div class="hero-art">
-          <div class="hero-image-wrap"><img src="https://plus.unsplash.com/premium_photo-1785583176854-064e96f85b50?fm=jpg&q=75&w=1200&auto=format&fit=crop" alt="Soft pastel floral arrangement in pink and cream tones" width="900" height="1100"></div>
-          <div class="hero-tag tag-top"><span class="tag-spark">✦</span> Made with intention</div>
-          <div class="hero-tag tag-bottom">No. 01 <span>●</span> Still life</div>
+          <div class="hero-outline" aria-hidden="true"></div>
+          <div class="hero-image-wrap"><img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1100&q=85" alt="Elegant pastel roses and peonies" width="900" height="1050"></div>
+          <div class="hero-tag"><span>Freshly arranged</span><strong>Since 2026</strong></div>
         </div>
       </div>
     </section>
 
-    <section class="intro-strip" aria-label="Brand introduction">
-      <div class="container intro-grid"><span class="intro-kicker">Fleur Éternelle</span><p>Where every stem tells a story — and every arrangement is made to be remembered.</p><span class="intro-seal" aria-hidden="true">✳</span></div>
-    </section>
-
     <section class="section-pad collection-section" id="collection" aria-labelledby="collection-title">
       <div class="container">
-        <div class="section-heading"><div><p class="eyebrow">A curated edit</p><h2 id="collection-title">The current collection<span class="heading-dot">.</span></h2></div><p class="section-aside">Browse our latest arrangements, crafted in small seasonal batches.</p></div>
-        <div class="featured-grid" id="featured-products" aria-live="polite"></div>
-        <div class="collection-toolbar" aria-label="Product search and filters">
-          <div class="search-field"><span aria-hidden="true">⌕</span><label class="sr-only" for="product-search">Search flowers</label><input id="product-search" type="search" placeholder="Search the collection" autocomplete="off"></div>
-          <div class="filter-pills" role="group" aria-label="Filter by category"><button class="filter-pill active" type="button" data-filter="all">All stems</button><button class="filter-pill" type="button" data-filter="signature">Signature</button><button class="filter-pill" type="button" data-filter="seasonal">Seasonal</button><button class="filter-pill" type="button" data-filter="dried">Dried &amp; preserved</button></div>
-          <label class="sort-field" for="product-sort"><span>Sort by</span><select id="product-sort"><option value="featured">Featured</option><option value="name-asc">Name A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label>
+        <div class="section-heading split-heading">
+          <div><p class="eyebrow">Our collection</p><h2 id="collection-title">Featured <em>arrangements.</em></h2></div>
+          <p class="section-aside">Every stem is selected for color, harmony, and the quiet emotion it brings.</p>
         </div>
+
+        <div class="featured-grid" id="featured-products" aria-live="polite"></div>
+
+        <div class="collection-toolbar" aria-label="Product search and filters">
+          <div class="search-field"><span aria-hidden="true">⌕</span><label class="sr-only" for="product-search">Search flowers</label><input id="product-search" type="search" placeholder="Search arrangements" autocomplete="off"></div>
+          <div class="filter-pills" role="group" aria-label="Filter by category">
+            <button class="filter-pill active" type="button" data-filter="all">All</button>
+            <button class="filter-pill" type="button" data-filter="signature">Signature</button>
+            <button class="filter-pill" type="button" data-filter="seasonal">Seasonal</button>
+            <button class="filter-pill" type="button" data-filter="dried">Dried &amp; preserved</button>
+          </div>
+          <label class="sort-field" for="product-sort"><span>Sort</span><select id="product-sort"><option value="featured">Featured</option><option value="name-asc">Name A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label>
+        </div>
+
         <div class="catalog-meta"><p id="result-count">Showing all arrangements</p><button class="reset-button" id="reset-filters" type="button">Reset filters</button></div>
         <div class="product-grid" id="product-grid" aria-live="polite"></div>
-        <div class="empty-state" id="empty-state" hidden><span class="empty-icon" aria-hidden="true">✿</span><h3>No stems found</h3><p>Try a different search or reset your filters.</p></div>
+        <div class="empty-state" id="empty-state" hidden><span aria-hidden="true">✿</span><h3>No flowers found</h3><p>Try a different keyword or reset the filters.</p></div>
       </div>
     </section>
 
     <section class="section-pad categories-section" id="categories" aria-labelledby="categories-title">
       <div class="container">
-        <div class="section-heading compact"><div><p class="eyebrow">Find your feeling</p><h2 id="categories-title">Shop by mood<span class="heading-dot">.</span></h2></div><p class="section-aside">A little direction for whatever the day is asking for.</p></div>
-        <div class="category-grid"><button class="category-card category-rose" type="button" data-category="signature"><span class="category-number">01</span><span class="category-icon" aria-hidden="true">❀</span><strong>Signature</strong><small>Our most loved compositions</small><span class="category-arrow" aria-hidden="true">↗</span></button><button class="category-card category-sage" type="button" data-category="seasonal"><span class="category-number">02</span><span class="category-icon" aria-hidden="true">✽</span><strong>Seasonal</strong><small>In step with the garden</small><span class="category-arrow" aria-hidden="true">↗</span></button><button class="category-card category-blue" type="button" data-category="dried"><span class="category-number">03</span><span class="category-icon" aria-hidden="true">✺</span><strong>Dried &amp; preserved</strong><small>Beauty that lingers on</small><span class="category-arrow" aria-hidden="true">↗</span></button></div>
+        <div class="section-heading"><div><p class="eyebrow">Explore by style</p><h2 id="categories-title">Flower <em>categories.</em></h2></div></div>
+        <div class="category-mosaic">
+          <button class="category-card category-card-large" type="button" data-category="signature"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1100&q=82" alt="Pink flowers in a soft garden setting"><span>Signature</span><small>Timeless compositions</small></button>
+          <button class="category-card" type="button" data-category="seasonal"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&q=82" alt="White seasonal flowers"><span>Seasonal</span><small>Fresh from the garden</small></button>
+          <button class="category-card" type="button" data-category="dried"><img src="https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=82" alt="Dried and preserved flowers"><span>Dried</span><small>Beauty that remains</small></button>
+        </div>
       </div>
     </section>
 
     <section class="section-pad story-section" id="about" aria-labelledby="about-title">
-      <div class="container story-grid"><div class="story-visual"><img src="https://plus.unsplash.com/premium_photo-1771601434140-c2499fe9c399?fm=jpg&q=75&w=900&auto=format&fit=crop" alt="Delicate flowers arranged in a calm studio setting" width="900" height="1050"><span class="story-caption">A quiet studio in bloom<br><em>— Verleane</em></span></div><div class="story-copy"><p class="eyebrow">A note from the studio</p><h2 id="about-title">The beauty of <em>becoming</em>.</h2><p>Fleur Éternelle began with a simple belief: flowers do not need to be loud to leave an impression. We compose with restraint, letting the character of each bloom lead the way.</p><p>Every arrangement is created in our small studio with an eye for line, light, and the beautiful imperfections found in nature.</p><a class="text-link" href="#contact">Say hello <span aria-hidden="true">→</span></a><div class="story-signature" aria-label="Verleane signature">V<span>.</span></div></div></div>
+      <div class="container story-grid">
+        <div class="story-visual">
+          <div class="story-base"></div>
+          <img class="story-main-image" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=82" alt="A florist arranging flowers in a calm studio" width="760" height="900">
+          <img class="story-accent-image" src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=500&q=82" alt="Pink flower close-up" width="320" height="360">
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">Our story</p>
+          <h2 id="about-title">Rooted in legacy,<br><em>grown with love.</em></h2>
+          <p>Fleur Éternelle was created from a love for flowers and the memories they hold. We believe every arrangement can express what words sometimes cannot.</p>
+          <p>Each piece is thoughtfully composed with balance, softness, and attention to detail—so every bouquet feels personal, meaningful, and beautifully timeless.</p>
+          <div class="brand-values">
+            <div><span>✿</span><strong>Heartmade</strong><small>Every arrangement is made with care.</small></div>
+            <div><span>❋</span><strong>Seasonally loved</strong><small>Inspired by flowers at their best.</small></div>
+            <div><span>♥</span><strong>Meaningful</strong><small>Made for moments worth remembering.</small></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section-pad care-section" id="care" aria-labelledby="care-title">
-      <div class="container"><div class="section-heading compact"><div><p class="eyebrow">Keep the feeling</p><h2 id="care-title">A little flower care<span class="heading-dot">.</span></h2></div><p class="section-aside">Simple rituals for a longer, lovelier life.</p></div><div class="care-grid"><article class="care-card"><span>01</span><h3>Fresh water, often</h3><p>Refresh the water every two days and trim stems at an angle with clean shears.</p></article><article class="care-card"><span>02</span><h3>Find a calm corner</h3><p>Keep flowers away from direct sun, warm appliances, and ripening fruit.</p></article><article class="care-card"><span>03</span><h3>Let them open</h3><p>Give buds room to unfurl. A little patience is part of the arrangement’s magic.</p></article></div></div>
+      <div class="container">
+        <div class="section-heading split-heading"><div><p class="eyebrow">Flower care</p><h2 id="care-title">Keep them<br><em>blooming longer.</em></h2></div><p class="section-aside">Simple care helps each flower stay fresh and graceful for longer.</p></div>
+        <div class="care-grid">
+          <article class="care-card"><span>✂</span><h3>Trim stems diagonally</h3><p>Cut one to two centimeters from each stem using clean scissors.</p></article>
+          <article class="care-card"><span>💧</span><h3>Change water often</h3><p>Refresh the vase water every two days to keep it clear.</p></article>
+          <article class="care-card"><span>🧪</span><h3>Add floral food</h3><p>Use the flower food provided and follow the recommended amount.</p></article>
+          <article class="care-card"><span>🍃</span><h3>Remove leaves below water</h3><p>Keep submerged leaves out of the vase to help prevent bacteria.</p></article>
+          <article class="care-card"><span>◌</span><h3>Clean the vase</h3><p>Wash the vase before refilling it with fresh room-temperature water.</p></article>
+          <article class="care-card"><span>☀</span><h3>Avoid direct heat</h3><p>Keep flowers away from strong sunlight, heat, and ripening fruit.</p></article>
+        </div>
+      </div>
     </section>
 
     <section class="section-pad contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-grid"><div class="contact-copy"><p class="eyebrow">Let’s make something beautiful</p><h2 id="contact-title">Have a flower<br><em>in mind?</em></h2><p>Tell us what you’re imagining. We’re happy to share availability, seasonal notes, and thoughtful suggestions.</p><div class="contact-details"><a href="mailto:hello@fleureternelle.example"><span aria-hidden="true">✉</span> hello@fleureternelle.example</a><a href="tel:+639000000000"><span aria-hidden="true">◌</span> +63 900 000 0000</a><p><span aria-hidden="true">⌖</span> Business address, Philippines</p></div><div class="social-links"><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook <span aria-hidden="true">↗</span></a></div></div><div class="inquiry-card"><div class="form-heading"><span class="form-index">01 / 02</span><h3>Start an inquiry</h3><p>We usually reply within one studio day.</p></div><form id="inquiry-form" novalidate><div class="form-row"><div class="form-field"><label for="full-name">Full name <span>*</span></label><input id="full-name" name="fullName" type="text" autocomplete="name" required><small class="field-error" data-error-for="full-name"></small></div><div class="form-field"><label for="email">Email <span>*</span></label><input id="email" name="email" type="email" autocomplete="email" required><small class="field-error" data-error-for="email"></small></div></div><div class="form-row"><div class="form-field"><label for="mobile">Mobile number</label><input id="mobile" name="mobile" type="tel" autocomplete="tel" inputmode="tel"></div><div class="form-field"><label for="selected-product">Selected product</label><select id="selected-product" name="selectedProduct"><option value="">Choose an arrangement</option></select></div></div><div class="form-field"><label for="subject">Subject <span>*</span></label><input id="subject" name="subject" type="text" required><small class="field-error" data-error-for="subject"></small></div><div class="form-field"><label for="message">Message <span>*</span></label><textarea id="message" name="message" rows="4" placeholder="Tell us a little about what you have in mind..." required></textarea><small class="field-error" data-error-for="message"></small></div><button class="button button-dark" type="submit">Send inquiry <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite"></p></form></div></div>
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Get in touch</p>
+          <h2 id="contact-title">Let’s create<br><em>something beautiful.</em></h2>
+          <p>Whether you are celebrating a milestone, giving a thoughtful gift, or simply brightening someone’s day, tell us what you have in mind.</p>
+          <div class="contact-details">
+            <a href="mailto:hello@fleureternelle.example"><span>✉</span> hello@fleureternelle.example</a>
+            <a href="tel:+639000000000"><span>◌</span> +63 900 000 0000</a>
+            <p><span>⌖</span> Business address, Philippines</p>
+          </div>
+          <div class="social-links"><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a><a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a></div>
+        </div>
+
+        <div class="inquiry-card">
+          <div class="form-heading"><h3>Send an inquiry</h3><p>Share a few details and we will get back to you.</p></div>
+          <form id="inquiry-form" novalidate>
+            <div class="form-row">
+              <div class="form-field"><label for="full-name">Full name *</label><input id="full-name" name="fullName" type="text" autocomplete="name" required><small class="field-error" data-error-for="full-name"></small></div>
+              <div class="form-field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required><small class="field-error" data-error-for="email"></small></div>
+            </div>
+            <div class="form-row">
+              <div class="form-field"><label for="mobile">Mobile number</label><input id="mobile" name="mobile" type="tel" autocomplete="tel" inputmode="tel"></div>
+              <div class="form-field"><label for="selected-product">Selected product</label><select id="selected-product" name="selectedProduct"><option value="">Choose an arrangement</option></select></div>
+            </div>
+            <div class="form-field"><label for="subject">Subject *</label><input id="subject" name="subject" type="text" required><small class="field-error" data-error-for="subject"></small></div>
+            <div class="form-field"><label for="message">Message *</label><textarea id="message" name="message" rows="5" placeholder="Tell us what you have in mind..." required></textarea><small class="field-error" data-error-for="message"></small></div>
+            <button class="button button-primary form-submit" type="submit">Send inquiry</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-top"><a class="brand footer-brand" href="#home" aria-label="Fleur Éternelle home"><img class="brand-logo" src="assets/images/fleur-eternelle-logo.jpg" alt="Fleur Éternelle by Verleane logo" width="56" height="56"><span class="brand-copy"><strong>Fleur Éternelle</strong><small>by Verleane</small></span></a><p>Florals for the beautifully<br>unhurried.</p><div class="footer-nav"><a href="#collection">Collection</a><a href="#about">Our story</a><a href="#contact">Contact</a></div></div><div class="container footer-bottom"><span>© <span id="current-year"></span> Fleur Éternelle by Verleane</span><span>Made with care &amp; a little wonder <span aria-hidden="true">✦</span></span></div></footer>
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <a class="brand footer-brand" href="#home"><img class="brand-logo" src="assets/images/fleur-eternelle-logo.jpg" alt="Fleur Éternelle by Verleane logo" width="46" height="46"><span class="brand-copy"><strong>Fleur Éternelle</strong><small>by Verleane</small></span></a>
+      <nav class="footer-nav" aria-label="Footer navigation"><a href="#collection">Collection</a><a href="#about">About</a><a href="#care">Care</a><a href="#contact">Contact</a></nav>
+      <span>© <span id="current-year"></span> Fleur Éternelle by Verleane</span>
+    </div>
+  </footer>
 
   <button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">↑</button>
-  <div class="modal-backdrop" id="product-modal" hidden><div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="modal-close" type="button" aria-label="Close product details">×</button><div class="modal-image"><img id="modal-image" src="" alt=""></div><div class="modal-content"><p class="eyebrow" id="modal-category"></p><h2 id="modal-title"></h2><p class="modal-description" id="modal-description"></p><div class="modal-meta"><span id="modal-price"></span><span class="status-badge" id="modal-status"></span></div><div class="detail-list"><div><span>Composition</span><strong id="modal-composition"></strong></div><div><span>Care</span><strong id="modal-care"></strong></div></div><a class="button button-primary modal-inquire" href="#contact">Inquire about this arrangement <span aria-hidden="true">↗</span></a></div></div></div>
-  <script src="js/products.js" defer></script><script src="js/script.js" defer></script>
+  <div class="modal-backdrop" id="product-modal" hidden>
+    <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close product details">×</button>
+      <div class="modal-image"><img id="modal-image" src="" alt=""></div>
+      <div class="modal-content"><p class="eyebrow" id="modal-category"></p><h2 id="modal-title"></h2><p class="modal-description" id="modal-description"></p><div class="modal-meta"><span id="modal-price"></span><span class="status-badge" id="modal-status"></span></div><div class="detail-list"><div><span>Composition</span><strong id="modal-composition"></strong></div><div><span>Care</span><strong id="modal-care"></strong></div></div><a class="button button-primary modal-inquire" href="#contact">Inquire about this arrangement</a></div>
+    </div>
+  </div>
+  <script src="js/products.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
