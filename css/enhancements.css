@@ -1,0 +1,256 @@
+/* Readability, filter controls, pricing visibility, and motion refinements */
+
+body {
+  font-size: 16px;
+}
+
+.site-nav a {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.brand-copy strong {
+  font-size: 18px;
+}
+
+.brand-copy small {
+  font-size: 8px;
+}
+
+.hero-text,
+.section-aside,
+.story-copy > p:not(.eyebrow),
+.contact-copy > p:not(.eyebrow) {
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.eyebrow {
+  font-size: 10px;
+}
+
+.collection-toolbar {
+  grid-template-columns: minmax(240px, 1fr) auto minmax(150px, auto);
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  overflow: visible;
+}
+
+.filter-pill {
+  min-height: 38px;
+  padding: 9px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid #ded4ca;
+  box-shadow: 0 2px 8px rgba(70, 52, 42, 0.04);
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.filter-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(70, 52, 42, 0.09);
+}
+
+.filter-pill.active {
+  box-shadow: 0 8px 18px rgba(207, 170, 169, 0.3);
+}
+
+.sort-field {
+  gap: 10px;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
+.sort-field span {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.sort-field select {
+  min-height: 38px;
+  min-width: 145px;
+  padding: 8px 30px 8px 12px;
+  border: 1px solid #ded4ca;
+  border-radius: 8px;
+  background-color: var(--paper);
+  font-size: 11px;
+}
+
+.product-card {
+  padding: 10px;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: #d8c8bf;
+  box-shadow: 0 18px 38px rgba(70, 52, 42, 0.09);
+}
+
+.product-category {
+  font-size: 9px;
+  margin-top: 12px;
+}
+
+.product-card h3 {
+  font-size: 24px;
+  line-height: 1.15;
+  margin: 4px 0 7px;
+}
+
+.product-card-description {
+  min-height: 44px;
+  font-size: 11px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.product-bottom {
+  gap: 10px;
+}
+
+.product-bottom > div {
+  min-height: 30px;
+}
+
+.product-price {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a76869;
+  opacity: 1;
+  visibility: visible;
+}
+
+.status-badge {
+  font-size: 8px;
+  padding: 5px 8px;
+}
+
+.view-details {
+  min-height: 36px;
+  font-size: 9px;
+  font-weight: 600;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.view-details:hover {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+.care-card h3 {
+  font-size: 21px;
+}
+
+.care-card p,
+.contact-details,
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-size: 12px;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(.2,.65,.25,1), transform 700ms cubic-bezier(.2,.65,.25,1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 80ms; }
+.reveal-delay-2 { transition-delay: 160ms; }
+.reveal-delay-3 { transition-delay: 240ms; }
+
+.hero-copy,
+.hero-art {
+  animation: heroFadeUp 800ms cubic-bezier(.2,.65,.25,1) both;
+}
+
+.hero-art {
+  animation-delay: 130ms;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 899px) {
+  body {
+    font-size: 15px;
+  }
+
+  .collection-toolbar {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .filter-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+
+  .filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sort-field {
+    justify-content: space-between;
+  }
+
+  .sort-field select {
+    flex: 1;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 599px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .product-card h3 {
+    font-size: 26px;
+  }
+
+  .product-card-description {
+    font-size: 12px;
+    min-height: auto;
+  }
+
+  .product-price {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .hero-copy,
+  .hero-art {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
