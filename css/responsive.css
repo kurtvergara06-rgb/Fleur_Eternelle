@@ -1,0 +1,52 @@
+@media (min-width:600px){
+  .container{width:min(100% - 64px,1180px)}
+  .section-pad{padding:100px 0}
+  .hero{padding-top:74px}
+  .hero-grid{grid-template-columns:1fr .9fr;align-items:center;gap:50px}
+  .hero-art{width:90%}
+  .featured-grid{grid-template-columns:1.22fr .78fr}
+  .featured-card,.featured-card:nth-child(2){min-height:380px}
+  .collection-toolbar{grid-template-columns:1.2fr 1.7fr auto;align-items:center;gap:22px}
+  .search-field{border-bottom:0;border-right:1px solid var(--line);padding-right:20px}
+  .filter-pills{padding:0}
+  .sort-field{justify-content:flex-end}
+  .product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 20px}
+  .category-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+  .category-card{min-height:220px}
+  .story-grid{grid-template-columns:.85fr 1fr;gap:70px;align-items:center}
+  .story-visual{width:85%;justify-self:end}
+  .care-grid{grid-template-columns:repeat(3,1fr);gap:28px}
+  .care-card{min-height:160px}
+  .contact-grid{grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+  .inquiry-card{padding:34px}
+  .form-row{grid-template-columns:repeat(2,1fr);gap:22px}
+  .footer-top{grid-template-columns:1.3fr 1fr 1fr;align-items:start}
+  .product-modal{grid-template-columns:.9fr 1.1fr}
+  .modal-image,.modal-image img{min-height:460px}
+  .modal-content{padding:42px 36px}
+  .modal-content h2{font-size:46px}
+}
+
+@media (min-width:900px){
+  .menu-toggle{display:none}
+  .site-nav{display:flex;position:static;align-items:center;gap:22px;background:transparent;padding:0;border:0;box-shadow:none}
+  .site-nav a{padding:8px 0;font-size:12px}
+  .nav-cta{margin:0;padding:10px 17px!important}
+  .hero{padding-top:105px;padding-bottom:110px}
+  .intro-strip{padding:28px 0}
+  .featured-grid{grid-template-columns:1.35fr .65fr;gap:20px}
+  .featured-card,.featured-card:nth-child(2){min-height:460px}
+  .featured-card{padding:32px}
+  .product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .story-copy{padding-right:25px}
+  .footer-top{grid-template-columns:1.1fr 1fr 1fr}
+  .footer-top>p{font-size:21px}
+}
+
+@media (min-width:1200px){
+  .container{width:min(100% - 96px,1240px)}
+  .hero-grid{gap:90px}
+  .hero-art{width:78%}
+  .featured-card h3{font-size:31px}
+  .product-grid{gap:42px 25px}
+}
