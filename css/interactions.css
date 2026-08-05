@@ -1,0 +1,283 @@
+/* Shared interactive motion for the home and catalog pages. */
+
+html.js-enabled .motion-reveal {
+  opacity: 0;
+  transform: translate3d(0, 42px, 0) scale(.985);
+  filter: blur(5px);
+  transition:
+    opacity 850ms cubic-bezier(.2,.7,.2,1),
+    transform 850ms cubic-bezier(.2,.7,.2,1),
+    filter 850ms cubic-bezier(.2,.7,.2,1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+html.js-enabled .motion-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+.page-enter {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: var(--blush-light, #efe2dc);
+  transform-origin: top;
+  animation: pageCurtain 900ms cubic-bezier(.76,0,.24,1) forwards;
+}
+
+@keyframes pageCurtain {
+  0% { transform: scaleY(1); }
+  100% { transform: scaleY(0); }
+}
+
+.site-header {
+  transition: transform 280ms ease, box-shadow 280ms ease, background-color 280ms ease;
+}
+}
+
+.site-header.header-scrolled {
+  box-shadow: 0 10px 30px rgba(58,42,35,.08);
+}
+
+.site-header.header-hidden {
+  transform: translateY(-105%);
+}
+
+.site-nav a:not(.nav-cta) {
+  position: relative;
+}
+
+.site-nav a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 7px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 260ms ease;
+}
+
+.site-nav a:not(.nav-cta):hover::after,
+.site-nav a.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hero-image-wrap,
+.story-main-image,
+.story-accent-image,
+.category-card img,
+.catalog-card-image,
+.best-seller-image {
+  transform-style: preserve-3d;
+}
+
+.hero-image-wrap img,
+.story-main-image,
+.story-accent-image {
+  transition: transform 220ms ease-out;
+  will-change: transform;
+}
+
+.hero-outline {
+  animation: outlineFloat 5.5s ease-in-out infinite;
+}
+
+.hero-tag {
+  animation: tagFloat 4.2s ease-in-out infinite;
+}
+
+@keyframes outlineFloat {
+  0%,100% { transform: translate3d(0,0,0) rotate(0deg); }
+  50% { transform: translate3d(0,-10px,0) rotate(1deg); }
+}
+
+@keyframes tagFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-stats strong {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+.button,
+.view-all-link,
+.view-details,
+.catalog-actions button,
+.view-circle {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease, color 220ms ease;
+}
+
+.button::before,
+.view-all-link::before,
+.view-details::before,
+.catalog-actions button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255,255,255,.2);
+  transform: translateX(-110%) skewX(-18deg);
+  transition: transform 520ms cubic-bezier(.2,.75,.2,1);
+}
+
+.button:hover::before,
+.view-all-link:hover::before,
+.view-details:hover::before,
+.catalog-actions button:hover::before {
+  transform: translateX(110%) skewX(-18deg);
+}
+
+.button:active,
+.view-all-link:active,
+.view-details:active,
+.catalog-actions button:active,
+.view-circle:active {
+  transform: scale(.97);
+}
+
+.best-seller-card,
+.catalog-card,
+.category-card,
+.care-card,
+.inquiry-card {
+  transform-style: preserve-3d;
+  transition: transform 300ms cubic-bezier(.2,.7,.2,1), box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.best-seller-card:hover,
+.catalog-card:hover,
+.category-card:hover,
+.care-card:hover {
+  box-shadow: 0 22px 48px rgba(70,52,42,.13);
+}
+
+.best-seller-card img,
+.catalog-card img,
+.category-card img {
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 400ms ease;
+}
+
+.best-seller-card:hover img,
+.catalog-card:hover img,
+.category-card:hover img {
+  transform: scale(1.065);
+  filter: saturate(1.06);
+}
+
+.catalog-card.is-filtering {
+  animation: cardRefresh 420ms ease both;
+}
+
+@keyframes cardRefresh {
+  from { opacity: 0; transform: translateY(18px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-backdrop:not([hidden]) {
+  animation: backdropIn 260ms ease both;
+}
+
+.modal-backdrop:not([hidden]) .product-modal {
+  animation: modalIn 430ms cubic-bezier(.2,.75,.2,1) both;
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(26px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select,
+.catalog-search,
+.catalog-filter select {
+  transition: box-shadow 240ms ease, transform 240ms ease, border-color 240ms ease, background-color 240ms ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus,
+.catalog-search:focus-within,
+.catalog-filter select:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(70,52,42,.09);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 3px;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--blush, #cfaaa9), var(--sage, #7d8f72));
+}
+
+.pointer-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 240px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(207,170,169,.15), transparent 68%);
+  transform: translate3d(-50%,-50%,0);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+body:hover .pointer-glow { opacity: 1; }
+
+@media (hover: none), (max-width: 899px) {
+  .pointer-glow { display: none; }
+  .best-seller-card:hover,
+  .catalog-card:hover,
+  .category-card:hover,
+  .care-card:hover { transform: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .hero-outline,
+  .hero-tag { animation: none !important; }
+
+  html.js-enabled .motion-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  .site-header,
+  .hero-image-wrap img,
+  .story-main-image,
+  .story-accent-image {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .pointer-glow,
+  .scroll-progress { display: none; }
+}
