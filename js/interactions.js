@@ -43,10 +43,12 @@
       ? new IntersectionObserver((entries, observer) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-            entry.target.classList.add('is-visible');
+            window.setTimeout(() => {
+              entry.target.classList.add('is-visible');
+            }, 90);
             observer.unobserve(entry.target);
           });
-        }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' })
+        }, { threshold: 0.22, rootMargin: '0px 0px -12% 0px' })
       : null;
 
     function registerReveals(root = document) {
@@ -58,7 +60,7 @@
         if (element.dataset.motionReady === 'true') return;
         element.dataset.motionReady = 'true';
         element.classList.add('motion-reveal');
-        element.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 75}ms`);
+        element.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 140}ms`);
 
         if (revealObserver) revealObserver.observe(element);
         else element.classList.add('is-visible');
@@ -74,7 +76,7 @@
           registerReveals(node);
           node.querySelectorAll?.('.catalog-card').forEach((card, index) => {
             card.classList.add('is-filtering');
-            card.style.animationDelay = `${index * 45}ms`;
+            card.style.animationDelay = `${index * 100}ms`;
           });
         });
       });
@@ -171,7 +173,7 @@
       const suffix = match[2];
       stat.textContent = `0${suffix}`;
       const start = performance.now();
-      const duration = 1100;
+      const duration = 1500;
 
       function animate(now) {
         const progressValue = Math.min((now - start) / duration, 1);
