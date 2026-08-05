@@ -11,14 +11,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
   const siteNav = document.querySelector('.site-nav');
   const currentYear = document.querySelector('#current-year');
-  const currency = new Intl.NumberFormat('en-PH', {style:'currency',currency:'PHP',maximumFractionDigits:0});
+  const currency = new Intl.NumberFormat('en-PH', {
+    style: 'currency',
+    currency: 'PHP',
+    maximumFractionDigits: 0
+  });
+
   let lastFocused = null;
 
   const formatPrice = (price) => `From ${currency.format(price)}`;
 
+  const revealObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -45px 0px'
+      })
+    : null;
+
+  function registerRevealElements(root = document) {
+    const elements = root.querySelectorAll(
+      '.catalog-page-header, .catalog-controls, .catalog-card, .catalog-empty, .site-footer'
+    );
+
+    elements.forEach((element, index) => {
+      if (element.dataset.revealReady === 'true') return;
+
+      element.dataset.revealReady = 'true';
+      element.classList.add('reveal-on-scroll', `reveal-delay-${(index % 3) + 1}`);
+
+      if (revealObserver) {
+        revealObserver.observe(element);
+      } else {
+        element.classList.add('is-visible');
+      }
+    });
+  }
+
   function getVisibleProducts() {
     const selected = filter.value;
     const query = search.value.trim().toLowerCase();
+
     return products.filter((product) => {
       const matchesFilter = selected === 'all'
         || selected === product.category
@@ -31,9 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function render() {
     const visible = getVisibleProducts();
+
     grid.innerHTML = visible.map((product) => {
-      const badge = product.bestSeller ? 'Best seller' : (product.newArrival ? 'New' : product.categoryLabel);
+      const badge = product.bestSeller
+        ? 'Best seller'
+        : (product.newArrival ? 'New' : product.categoryLabel);
       const limited = product.availability !== 'Available' ? ' limited' : '';
+
       return `
         <article class="catalog-card">
           <div class="catalog-card-image">
@@ -49,13 +91,17 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </article>`;
     }).join('');
+
     count.textContent = `${visible.length} arrangement${visible.length === 1 ? '' : 's'}`;
     empty.hidden = visible.length > 0;
+
+    registerRevealElements(grid);
   }
 
   function openModal(id) {
     const product = products.find((item) => item.id === id);
     if (!product) return;
+
     lastFocused = document.activeElement;
     document.querySelector('#modal-image').src = product.image;
     document.querySelector('#modal-image').alt = product.alt;
@@ -81,9 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const button = event.target.closest('[data-product-id]');
     if (button) openModal(button.dataset.productId);
   });
+
   closeButton.addEventListener('click', closeModal);
-  modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !modal.hidden) closeModal(); });
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.hidden) closeModal();
+  });
 
   filter.addEventListener('change', render);
   search.addEventListener('input', render);
@@ -93,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.setAttribute('aria-expanded', String(!expanded));
     siteNav.classList.toggle('is-open', !expanded);
   });
+
   siteNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
     menuToggle.setAttribute('aria-expanded', 'false');
     siteNav.classList.remove('is-open');
@@ -100,4 +152,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   currentYear.textContent = new Date().getFullYear();
   render();
+  registerRevealElements(document);
 });
