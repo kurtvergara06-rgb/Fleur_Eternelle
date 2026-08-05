@@ -11,6 +11,7 @@
   <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/catalog-pages.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -23,8 +24,8 @@
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-        <a href="#collection">Collection</a>
-        <a href="#categories">Categories</a>
+        <a href="#best-sellers">Best sellers</a>
+        <a href="products.html">All flowers</a>
         <a href="#about">About</a>
         <a href="#care">Care tips</a>
         <a href="#contact">Contact</a>
@@ -41,8 +42,8 @@
           <h1 id="hero-title">Flowers that <em>carry forever</em> with them.</h1>
           <p class="hero-text">Inspired by meaningful moments and made with care, every arrangement is a continuation of the heart — a story, a memory, and a feeling preserved through flowers.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#collection">View collection</a>
-            <a class="button button-ghost" href="#contact">Send inquiry</a>
+            <a class="button button-primary" href="#best-sellers">Meet the best sellers</a>
+            <a class="button button-ghost" href="products.html">View all flowers</a>
           </div>
           <div class="hero-stats" aria-label="Business highlights">
             <div><strong>20+</strong><span>Floral designs</span></div>
@@ -58,39 +59,25 @@
       </div>
     </section>
 
-    <section class="section-pad collection-section" id="collection" aria-labelledby="collection-title">
+    <section class="home-best-sellers" id="best-sellers" aria-labelledby="best-sellers-title">
       <div class="container">
-        <div class="section-heading split-heading">
-          <div><p class="eyebrow">Our collection</p><h2 id="collection-title">Featured <em>arrangements.</em></h2></div>
-          <p class="section-aside">Every stem is selected for color, harmony, and the quiet emotion it brings.</p>
+        <div class="section-heading">
+          <p class="eyebrow">Most loved</p>
+          <h2 id="best-sellers-title">Meet the best sellers.</h2>
+          <p>Three favorite flower arrangements, selected for their beauty, balance, and lasting impression.</p>
         </div>
-
-        <div class="featured-grid" id="featured-products" aria-live="polite"></div>
-
-        <div class="collection-toolbar" aria-label="Product search and filters">
-          <div class="search-field"><span aria-hidden="true">⌕</span><label class="sr-only" for="product-search">Search flowers</label><input id="product-search" type="search" placeholder="Search arrangements" autocomplete="off"></div>
-          <div class="filter-pills" role="group" aria-label="Filter by category">
-            <button class="filter-pill active" type="button" data-filter="all">All</button>
-            <button class="filter-pill" type="button" data-filter="signature">Signature</button>
-            <button class="filter-pill" type="button" data-filter="seasonal">Seasonal</button>
-            <button class="filter-pill" type="button" data-filter="dried">Dried &amp; preserved</button>
-          </div>
-          <label class="sort-field" for="product-sort"><span>Sort</span><select id="product-sort"><option value="featured">Featured</option><option value="name-asc">Name A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label>
-        </div>
-
-        <div class="catalog-meta"><p id="result-count">Showing all arrangements</p><button class="reset-button" id="reset-filters" type="button">Reset filters</button></div>
-        <div class="product-grid" id="product-grid" aria-live="polite"></div>
-        <div class="empty-state" id="empty-state" hidden><span aria-hidden="true">✿</span><h3>No flowers found</h3><p>Try a different keyword or reset the filters.</p></div>
+        <div class="best-seller-grid" id="best-seller-grid" aria-live="polite"></div>
+        <div class="view-all-wrap"><a class="view-all-link" href="products.html">See everything <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
-    <section class="section-pad categories-section" id="categories" aria-labelledby="categories-title">
+    <section class="section-pad categories-section" aria-labelledby="categories-title">
       <div class="container">
         <div class="section-heading"><div><p class="eyebrow">Explore by style</p><h2 id="categories-title">Flower <em>categories.</em></h2></div></div>
         <div class="category-mosaic">
-          <button class="category-card category-card-large" type="button" data-category="signature"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1100&q=82" alt="Pink flowers in a soft garden setting"><span>Signature</span><small>Timeless compositions</small></button>
-          <button class="category-card" type="button" data-category="seasonal"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&q=82" alt="White seasonal flowers"><span>Seasonal</span><small>Fresh from the garden</small></button>
-          <button class="category-card" type="button" data-category="dried"><img src="https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=82" alt="Dried and preserved flowers"><span>Dried</span><small>Beauty that remains</small></button>
+          <a class="category-card category-card-large" href="products.html"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1100&q=82" alt="Pink flowers in a soft garden setting"><span>Signature</span><small>Timeless compositions</small></a>
+          <a class="category-card" href="products.html"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&q=82" alt="White seasonal flowers"><span>Seasonal</span><small>Fresh from the garden</small></a>
+          <a class="category-card" href="products.html"><img src="https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=82" alt="Dried and preserved flowers"><span>Dried</span><small>Beauty that remains</small></a>
         </div>
       </div>
     </section>
@@ -107,11 +94,6 @@
           <h2 id="about-title">Rooted in legacy,<br><em>grown with love.</em></h2>
           <p>Fleur Éternelle was created from a love for flowers and the memories they hold. We believe every arrangement can express what words sometimes cannot.</p>
           <p>Each piece is thoughtfully composed with balance, softness, and attention to detail—so every bouquet feels personal, meaningful, and beautifully timeless.</p>
-          <div class="brand-values">
-            <div><span>✿</span><strong>Heartmade</strong><small>Every arrangement is made with care.</small></div>
-            <div><span>❋</span><strong>Seasonally loved</strong><small>Inspired by flowers at their best.</small></div>
-            <div><span>♥</span><strong>Meaningful</strong><small>Made for moments worth remembering.</small></div>
-          </div>
         </div>
       </div>
     </section>
@@ -122,9 +104,6 @@
         <div class="care-grid">
           <article class="care-card"><span>✂</span><h3>Trim stems diagonally</h3><p>Cut one to two centimeters from each stem using clean scissors.</p></article>
           <article class="care-card"><span>💧</span><h3>Change water often</h3><p>Refresh the vase water every two days to keep it clear.</p></article>
-          <article class="care-card"><span>🧪</span><h3>Add floral food</h3><p>Use the flower food provided and follow the recommended amount.</p></article>
-          <article class="care-card"><span>🍃</span><h3>Remove leaves below water</h3><p>Keep submerged leaves out of the vase to help prevent bacteria.</p></article>
-          <article class="care-card"><span>◌</span><h3>Clean the vase</h3><p>Wash the vase before refilling it with fresh room-temperature water.</p></article>
           <article class="care-card"><span>☀</span><h3>Avoid direct heat</h3><p>Keep flowers away from strong sunlight, heat, and ripening fruit.</p></article>
         </div>
       </div>
@@ -135,53 +114,32 @@
         <div class="contact-copy">
           <p class="eyebrow">Get in touch</p>
           <h2 id="contact-title">Let’s create<br><em>something beautiful.</em></h2>
-          <p>Whether you are celebrating a milestone, giving a thoughtful gift, or simply brightening someone’s day, tell us what you have in mind.</p>
+          <p>Tell us what you have in mind, and we will help you choose an arrangement for your moment.</p>
           <div class="contact-details">
             <a href="mailto:hello@fleureternelle.example"><span>✉</span> hello@fleureternelle.example</a>
             <a href="tel:+639000000000"><span>◌</span> +63 900 000 0000</a>
             <p><span>⌖</span> Business address, Philippines</p>
           </div>
-          <div class="social-links"><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a><a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a></div>
         </div>
-
         <div class="inquiry-card">
           <div class="form-heading"><h3>Send an inquiry</h3><p>Share a few details and we will get back to you.</p></div>
-          <form id="inquiry-form" novalidate>
-            <div class="form-row">
-              <div class="form-field"><label for="full-name">Full name *</label><input id="full-name" name="fullName" type="text" autocomplete="name" required><small class="field-error" data-error-for="full-name"></small></div>
-              <div class="form-field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required><small class="field-error" data-error-for="email"></small></div>
-            </div>
-            <div class="form-row">
-              <div class="form-field"><label for="mobile">Mobile number</label><input id="mobile" name="mobile" type="tel" autocomplete="tel" inputmode="tel"></div>
-              <div class="form-field"><label for="selected-product">Selected product</label><select id="selected-product" name="selectedProduct"><option value="">Choose an arrangement</option></select></div>
-            </div>
-            <div class="form-field"><label for="subject">Subject *</label><input id="subject" name="subject" type="text" required><small class="field-error" data-error-for="subject"></small></div>
-            <div class="form-field"><label for="message">Message *</label><textarea id="message" name="message" rows="5" placeholder="Tell us what you have in mind..." required></textarea><small class="field-error" data-error-for="message"></small></div>
+          <form action="#" onsubmit="event.preventDefault(); document.getElementById('form-status').textContent='Your inquiry is ready. Connect this form to a backend before publishing.';">
+            <div class="form-row"><div class="form-field"><label for="full-name">Full name *</label><input id="full-name" type="text" required></div><div class="form-field"><label for="email">Email address *</label><input id="email" type="email" required></div></div>
+            <div class="form-field"><label for="subject">Subject *</label><input id="subject" type="text" required></div>
+            <div class="form-field"><label for="message">Message *</label><textarea id="message" rows="5" required></textarea></div>
             <button class="button button-primary form-submit" type="submit">Send inquiry</button>
-            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <p class="form-status" id="form-status" role="status"></p>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <a class="brand footer-brand" href="#home"><img class="brand-logo" src="assets/images/fleur-eternelle-logo.jpg" alt="Fleur Éternelle by Verleane logo" width="46" height="46"><span class="brand-copy"><strong>Fleur Éternelle</strong><small>by Verleane</small></span></a>
-      <nav class="footer-nav" aria-label="Footer navigation"><a href="#collection">Collection</a><a href="#about">About</a><a href="#care">Care</a><a href="#contact">Contact</a></nav>
-      <span>© <span id="current-year"></span> Fleur Éternelle by Verleane</span>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="container footer-wrap"><a class="brand footer-brand" href="#home"><img class="brand-logo" src="assets/images/fleur-eternelle-logo.jpg" alt="Fleur Éternelle by Verleane logo" width="46" height="46"><span class="brand-copy"><strong>Fleur Éternelle</strong><small>by Verleane</small></span></a><nav class="footer-nav" aria-label="Footer navigation"><a href="#best-sellers">Best sellers</a><a href="products.html">All flowers</a><a href="#contact">Contact</a></nav><span>© <span id="current-year"></span> Fleur Éternelle by Verleane</span></div></footer>
 
-  <button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">↑</button>
-  <div class="modal-backdrop" id="product-modal" hidden>
-    <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" id="modal-close" type="button" aria-label="Close product details">×</button>
-      <div class="modal-image"><img id="modal-image" src="" alt=""></div>
-      <div class="modal-content"><p class="eyebrow" id="modal-category"></p><h2 id="modal-title"></h2><p class="modal-description" id="modal-description"></p><div class="modal-meta"><span id="modal-price"></span><span class="status-badge" id="modal-status"></span></div><div class="detail-list"><div><span>Composition</span><strong id="modal-composition"></strong></div><div><span>Care</span><strong id="modal-care"></strong></div></div><a class="button button-primary modal-inquire" href="#contact">Inquire about this arrangement</a></div>
-    </div>
-  </div>
+  <div class="modal-backdrop" id="product-modal" hidden><div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="modal-close" type="button" aria-label="Close product details">×</button><div class="modal-image"><img id="modal-image" src="" alt=""></div><div class="modal-content"><p class="eyebrow" id="modal-category"></p><h2 id="modal-title"></h2><p class="modal-description" id="modal-description"></p><div class="modal-meta"><span id="modal-price"></span><span class="status-badge" id="modal-status"></span></div><div class="detail-list"><div><span>Composition</span><strong id="modal-composition"></strong></div><div><span>Care</span><strong id="modal-care"></strong></div></div><a class="button button-primary" href="#contact">Inquire about this arrangement</a></div></div></div>
+
   <script src="js/products.js" defer></script>
-  <script src="js/script.js" defer></script>
+  <script src="js/home.js" defer></script>
 </body>
 </html>
