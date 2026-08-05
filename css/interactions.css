@@ -36,7 +36,6 @@ html.js-enabled .motion-reveal.is-visible {
 .site-header {
   transition: transform 280ms ease, box-shadow 280ms ease, background-color 280ms ease;
 }
-}
 
 .site-header.header-scrolled {
   box-shadow: 0 10px 30px rgba(58,42,35,.08);
