@@ -1,5 +1,21 @@
 'use strict';
 
+(() => {
+  if (!document.querySelector('link[href="css/interactions.css"]')) {
+    const styles = document.createElement('link');
+    styles.rel = 'stylesheet';
+    styles.href = 'css/interactions.css';
+    document.head.appendChild(styles);
+  }
+
+  if (!document.querySelector('script[src="js/interactions.js"]')) {
+    const script = document.createElement('script');
+    script.src = 'js/interactions.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('#best-seller-grid');
   const modal = document.querySelector('#product-modal');
