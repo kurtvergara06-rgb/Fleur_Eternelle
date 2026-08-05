@@ -2,12 +2,12 @@
 
 html.js-enabled .motion-reveal {
   opacity: 0;
-  transform: translate3d(0, 42px, 0) scale(.985);
-  filter: blur(5px);
+  transform: translate3d(0, 72px, 0) scale(.965);
+  filter: blur(8px);
   transition:
-    opacity 850ms cubic-bezier(.2,.7,.2,1),
-    transform 850ms cubic-bezier(.2,.7,.2,1),
-    filter 850ms cubic-bezier(.2,.7,.2,1);
+    opacity 1400ms cubic-bezier(.16,.72,.18,1),
+    transform 1400ms cubic-bezier(.16,.72,.18,1),
+    filter 1200ms cubic-bezier(.16,.72,.18,1);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform, filter;
 }
@@ -25,7 +25,7 @@ html.js-enabled .motion-reveal.is-visible {
   pointer-events: none;
   background: var(--blush-light, #efe2dc);
   transform-origin: top;
-  animation: pageCurtain 900ms cubic-bezier(.76,0,.24,1) forwards;
+  animation: pageCurtain 1100ms cubic-bezier(.76,0,.24,1) forwards;
 }
 
 @keyframes pageCurtain {
@@ -34,7 +34,7 @@ html.js-enabled .motion-reveal.is-visible {
 }
 
 .site-header {
-  transition: transform 280ms ease, box-shadow 280ms ease, background-color 280ms ease;
+  transition: transform 360ms ease, box-shadow 360ms ease, background-color 360ms ease;
 }
 
 .site-header.header-scrolled {
@@ -59,7 +59,7 @@ html.js-enabled .motion-reveal.is-visible {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 260ms ease;
+  transition: transform 320ms ease;
 }
 
 .site-nav a:not(.nav-cta):hover::after,
@@ -80,7 +80,7 @@ html.js-enabled .motion-reveal.is-visible {
 .hero-image-wrap img,
 .story-main-image,
 .story-accent-image {
-  transition: transform 220ms ease-out;
+  transition: transform 300ms ease-out;
   will-change: transform;
 }
 
@@ -115,7 +115,7 @@ html.js-enabled .motion-reveal.is-visible {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease, color 220ms ease;
+  transition: transform 260ms ease, box-shadow 260ms ease, background-color 260ms ease, color 260ms ease;
 }
 
 .button::before,
@@ -128,7 +128,7 @@ html.js-enabled .motion-reveal.is-visible {
   z-index: -1;
   background: rgba(255,255,255,.2);
   transform: translateX(-110%) skewX(-18deg);
-  transition: transform 520ms cubic-bezier(.2,.75,.2,1);
+  transition: transform 620ms cubic-bezier(.2,.75,.2,1);
 }
 
 .button:hover::before,
@@ -152,7 +152,7 @@ html.js-enabled .motion-reveal.is-visible {
 .care-card,
 .inquiry-card {
   transform-style: preserve-3d;
-  transition: transform 300ms cubic-bezier(.2,.7,.2,1), box-shadow 300ms ease, border-color 300ms ease;
+  transition: transform 380ms cubic-bezier(.2,.7,.2,1), box-shadow 380ms ease, border-color 380ms ease;
 }
 
 .best-seller-card:hover,
@@ -165,7 +165,7 @@ html.js-enabled .motion-reveal.is-visible {
 .best-seller-card img,
 .catalog-card img,
 .category-card img {
-  transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 400ms ease;
+  transition: transform 800ms cubic-bezier(.2,.7,.2,1), filter 500ms ease;
 }
 
 .best-seller-card:hover img,
@@ -176,20 +176,20 @@ html.js-enabled .motion-reveal.is-visible {
 }
 
 .catalog-card.is-filtering {
-  animation: cardRefresh 420ms ease both;
+  animation: cardRefresh 650ms ease both;
 }
 
 @keyframes cardRefresh {
-  from { opacity: 0; transform: translateY(18px) scale(.98); }
+  from { opacity: 0; transform: translateY(28px) scale(.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .modal-backdrop:not([hidden]) {
-  animation: backdropIn 260ms ease both;
+  animation: backdropIn 340ms ease both;
 }
 
 .modal-backdrop:not([hidden]) .product-modal {
-  animation: modalIn 430ms cubic-bezier(.2,.75,.2,1) both;
+  animation: modalIn 560ms cubic-bezier(.2,.75,.2,1) both;
 }
 
 @keyframes backdropIn {
@@ -198,7 +198,7 @@ html.js-enabled .motion-reveal.is-visible {
 }
 
 @keyframes modalIn {
-  from { opacity: 0; transform: translateY(26px) scale(.96); }
+  from { opacity: 0; transform: translateY(32px) scale(.95); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -207,7 +207,7 @@ html.js-enabled .motion-reveal.is-visible {
 .form-field select,
 .catalog-search,
 .catalog-filter select {
-  transition: box-shadow 240ms ease, transform 240ms ease, border-color 240ms ease, background-color 240ms ease;
+  transition: box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease, background-color 300ms ease;
 }
 
 .form-field input:focus,
