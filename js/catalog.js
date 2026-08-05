@@ -1,5 +1,21 @@
 'use strict';
 
+(() => {
+  if (!document.querySelector('link[href="css/interactions.css"]')) {
+    const styles = document.createElement('link');
+    styles.rel = 'stylesheet';
+    styles.href = 'css/interactions.css';
+    document.head.appendChild(styles);
+  }
+
+  if (!document.querySelector('script[src="js/interactions.js"]')) {
+    const script = document.createElement('script');
+    script.src = 'js/interactions.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('#catalog-grid');
   const filter = document.querySelector('#catalog-filter');
@@ -18,40 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let lastFocused = null;
-
   const formatPrice = (price) => `From ${currency.format(price)}`;
-
-  const revealObserver = 'IntersectionObserver' in window
-    ? new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        });
-      }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -45px 0px'
-      })
-    : null;
-
-  function registerRevealElements(root = document) {
-    const elements = root.querySelectorAll(
-      '.catalog-page-header, .catalog-controls, .catalog-card, .catalog-empty, .site-footer'
-    );
-
-    elements.forEach((element, index) => {
-      if (element.dataset.revealReady === 'true') return;
-
-      element.dataset.revealReady = 'true';
-      element.classList.add('reveal-on-scroll', `reveal-delay-${(index % 3) + 1}`);
-
-      if (revealObserver) {
-        revealObserver.observe(element);
-      } else {
-        element.classList.add('is-visible');
-      }
-    });
-  }
 
   function getVisibleProducts() {
     const selected = filter.value;
@@ -94,8 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     count.textContent = `${visible.length} arrangement${visible.length === 1 ? '' : 's'}`;
     empty.hidden = visible.length > 0;
-
-    registerRevealElements(grid);
   }
 
   function openModal(id) {
@@ -152,5 +133,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   currentYear.textContent = new Date().getFullYear();
   render();
-  registerRevealElements(document);
 });
